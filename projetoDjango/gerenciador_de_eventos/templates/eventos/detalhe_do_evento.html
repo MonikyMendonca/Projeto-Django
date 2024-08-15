@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ evento.titulo }}</title>
+    
+</head>
+<body>
+    <h1>{{ evento.titulo }}</h1>
+    <p>Tipo: {{ evento.get_tipo_display }}</p>
+    <p>Data: {{ evento.data_inicio }} {% if evento.data_fim %}a {{ evento.data_fim }}{% endif %}</p>
+    <p>Horário: {{ evento.horario }}</p>
+    <p>Local: {{ evento.local }}</p>
+    <p>Cidade: {{ evento.cidade }}</p>
+    <p>Valor: {% if evento.gratuito %}Gratuito{% else %}R$ {{ evento.valor }}{% endif %}</p>
+    <p>Vagas: {% if evento.vagas %}{{ evento.vagas }}{% else %}Ilimitadas{% endif %}</p>
+</body>
+</html>

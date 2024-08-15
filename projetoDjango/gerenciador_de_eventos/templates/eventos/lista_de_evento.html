@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Eventos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Eventos de Itapajé</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Evento</button>
+    </form>
+    <ul>
+        {% for evento in eventos %}
+            <li>
+                <a href="{% url 'detalhe_do_evento' evento.id %}">{{ evento.titulo }}</a>
+                - {{ evento.get_tipo_display }} - {{ evento.cidade }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
